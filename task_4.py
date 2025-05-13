@@ -1,27 +1,32 @@
 class EmployeeSalary:
     hourly_payment = 400
 
-    def __init__(self, name, hours=None, rest_days=0, email=None):
+    def __init__(self, name, hours = 0, rest_days = 0, email = None):
         self.name = name
         self.hours = hours
-        self.rest_days = rest_days
-        self.email = email
+        self.rest_days = rest_days 
+        self.email = email 
 
-    def get_hours(self):
-        if self.hours is None:
-            self.hours = (7 - self.rest_days) * 8
-        return self.hours
-
-    def get_email(self):
-        if self.email is None:
-            return f"{name}@email.com"
+    @classmethod
+    def get_hours(cls, hours):
+        if hours not in cls.hours:
+            hours = (7-rest_days)*8
+            return cls(hours)
         
+    @classmethod
+    def get_email(cls, email):
+        if email not in cls.email:
+            email = f"{self.name}@email.com"
+            return cls(email)
+               
     @classmethod
     def set_hourly_payment(cls, new_hourly_payment):
         cls.hourly_payment = new_hourly_payment
 
+    
     def salary(self):
-        return self.get_hours() * self.hourly_payment
+        if self.hours > 0:
+            return self.hours * self.hourly_payment
 
 
 # Пример использования класса:
